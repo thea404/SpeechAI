@@ -1,0 +1,34 @@
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python temporary files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE settings
+.idea/
+
+# Local audio experiments and recordings
+Dataset/Experiments/
+
+# External OpenPronounce repository
+AI_Model/AI_Model/OpenPronounce/
+
+# Model weights and downloaded checkpoints
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Operating system files
+.DS_Store
+Thumbs.db
