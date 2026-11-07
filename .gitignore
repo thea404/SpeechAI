@@ -32,3 +32,17 @@ AI_Model/AI_Model/OpenPronounce/
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# .NET generated files
+**/bin/
+**/obj/
+.vs/
+*.user
+*.suo
+
+# Node.js dependencies
+**/node_modules/
+**/dist/
+
+# Local development configuration
+**/appsettings.Development.json
