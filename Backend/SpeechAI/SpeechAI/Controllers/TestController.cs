@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace SpeechAI.Controllers
 {
@@ -14,12 +16,10 @@ namespace SpeechAI.Controllers
             return Ok(new
             {
                 message = "You have successfully accessed a protected endpoint!",
-                userId = User.FindFirst(
-                    System.Security.Claims.ClaimTypes.NameIdentifier
-                )?.Value,
-                email = User.FindFirst(
-                    System.Security.Claims.ClaimTypes.Email
-                )?.Value
+                userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                firstName = User.FindFirst(ClaimTypes.GivenName)?.Value,
+                lastName = User.FindFirst(ClaimTypes.Surname)?.Value,
+                email = User.FindFirst(ClaimTypes.Email)?.Value
             });
         }
     }

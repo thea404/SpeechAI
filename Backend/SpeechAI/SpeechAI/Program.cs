@@ -10,6 +10,18 @@ using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+
 // Add services to the container.
 builder.Services.AddControllers();
 
@@ -79,6 +91,8 @@ builder.Services.AddSwaggerGen(options =>
 // Configure the HTTP request pipeline.
 var app = builder.Build();
 
+app.UseCors("AllowReactApp");
+
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -86,6 +100,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 // Authentication must come before Authorization
+
 app.UseAuthentication();
 app.UseAuthorization();
 

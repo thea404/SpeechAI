@@ -16,6 +16,28 @@ namespace SpeechAI.Controllers
             _authService = authService;
         }
 
+        // REGISTER
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(
+            [FromBody] RegisterRequest request)
+        {
+            var result = await _authService.RegisterAsync(request);
+
+            if (result == "Email already exists.")
+            {
+                return Conflict(new
+                {
+                    message = result
+                });
+            }
+
+            return Ok(new
+            {
+                message = result
+            });
+        }
+
+        // LOGIN
         [HttpPost("login")]
         public async Task<IActionResult> Login(
             [FromBody] LoginRequest request)
