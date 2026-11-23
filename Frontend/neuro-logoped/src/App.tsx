@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
-
+import ExercisesPage from './pages/ExercisesPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -19,6 +19,7 @@ function App() {
         {/* Protected pages */}
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/exercises" element={<ExercisesPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
